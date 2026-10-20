@@ -24,37 +24,37 @@ Requires **Node.js 20+** and **Python 3.10+**. Both demos use only built-in libr
 
 ### 1. Run the Node.js agent against fixture data
 
-\`\`\`bash
+```bash
 node node/cli.mjs health
 node node/cli.mjs stock SKU-DEMO-1
 node node/cli.mjs order DEMO-0001
 node node/cli.mjs preview DEMO-0001 SKU-DEMO-1 2
-\`\`\`
+```
 
-The \`preview\` command returns an immutable *proposed intent*, evidence from order and stock data, and a SHA-256 fingerprint. **It does not reserve stock, post documents or send messages.**
+The `preview` command returns an immutable *proposed intent*, evidence from order and stock data, and a SHA-256 fingerprint. **It does not reserve stock, post documents or send messages.**
 
 ### 2. Connect Node.js to the local Python API
 
 Terminal A:
 
-\`\`\`bash
+```bash
 python python/demo_gateway.py
-\`\`\`
+```
 
 Terminal B:
 
-\`\`\`bash
+```bash
 node node/cli.mjs preview DEMO-0001 SKU-DEMO-1 2 --gateway
-\`\`\`
+```
 
-The gateway only listens on \`127.0.0.1:8765\` and serves synthetic test data. Node accepts this hardcoded local endpoint only.
+The gateway only listens on `127.0.0.1:8765` and serves synthetic test data. Node accepts this hardcoded local endpoint only.
 
 ### 3. Run tests
 
-\`\`\`bash
+```bash
 node --test node/tests/*.test.mjs
 python -m unittest discover -s python/tests -v
-\`\`\`
+```
 
 GitHub Actions also runs both test suites on pushes.
 
