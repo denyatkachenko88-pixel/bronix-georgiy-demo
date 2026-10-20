@@ -1,0 +1,48 @@
+{
+  "dataset": "SYNTHETIC_ONLY",
+  "orders": [
+    {
+      "number": "DEMO-0001",
+      "status": "posted",
+      "customer_id": "CUSTOMER-DEMO-A",
+      "lines": [
+        {
+          "sku": "SKU-DEMO-1",
+          "quantity": 3,
+          "reserved": 0
+        },
+        {
+          "sku": "SKU-DEMO-2",
+          "quantity": 2,
+          "reserved": 1
+        }
+      ]
+    },
+    {
+      "number": "DEMO-0002",
+      "status": "draft",
+      "customer_id": "CUSTOMER-DEMO-B",
+      "lines": [
+        {
+          "sku": "SKU-DEMO-1",
+          "quantity": 1,
+          "reserved": 0
+        }
+      ]
+    }
+  ],
+  "stock": [
+    {
+      "sku": "SKU-DEMO-1",
+      "physical": 23,
+      "reserved_total": 4,
+      "free": 19
+    },
+    {
+      "sku": "SKU-DEMO-2",
+      "physical": 10,
+      "reserved_total": 6,
+      "free": 4
+    }
+  ]
+}

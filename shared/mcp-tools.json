@@ -1,0 +1,67 @@
+{
+  "description": "Public MCP-style agent tool interface. Not a running MCP server. Only synthetic read + preview operations.",
+  "tools": [
+    {
+      "name": "get_stock",
+      "description": "Read synthetic stock for exactly one SKU",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "pattern": "^SKU-DEMO-[0-9]+$"
+          }
+        },
+        "required": [
+          "sku"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_order",
+      "description": "Read synthetic order by exact number",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "order_number": {
+            "type": "string",
+            "pattern": "^DEMO-[0-9]{4}$"
+          }
+        },
+        "required": [
+          "order_number"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "preview_reservation",
+      "description": "Validate and prepare a human-reviewable intent. NEVER executes a 1C write.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "order_number": {
+            "type": "string",
+            "pattern": "^DEMO-[0-9]{4}$"
+          },
+          "sku": {
+            "type": "string",
+            "pattern": "^SKU-DEMO-[0-9]+$"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "order_number",
+          "sku",
+          "quantity"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

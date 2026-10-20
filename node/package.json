@@ -1,0 +1,13 @@
+{
+  "name": "bronix-georgiy-public-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "demo": "node cli.mjs preview DEMO-0001 SKU-DEMO-1 2"
+  }
+}

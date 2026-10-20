@@ -1,0 +1,33 @@
+name: Check public demo
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Node agent tests
+        run: node --test node/tests/*.test.mjs
+      - name: Python gateway tests
+        run: python -m unittest discover -s python/tests -v
+      - name: Node demo smoke test
+        run: node node/cli.mjs preview DEMO-0001 SKU-DEMO-1 2
+      - name: Cross-language mock integration
+        shell: bash
+        run: |
+          python python/demo_gateway.py > /tmp/one-c-mock.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true' EXIT
+          sleep 1
+          node node/cli.mjs preview DEMO-0001 SKU-DEMO-1 2 --gateway
