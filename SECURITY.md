@@ -2,7 +2,7 @@
 
 This repository contains **no intentional production credentials or real customer data**.
 
-- Do not put \`.env\`, service-account JSON, API keys, Telegram tokens, SSH keys, 1C logins or business exports into commits.
+- Do not put `.env`, service-account JSON, API keys, Telegram tokens, SSH keys, 1C logins or business exports into commits.
 - Public samples must use synthetic IDs, synthetic inventory and localhost-only endpoints.
 - No production or private 1C connection is provided.
 - The Node adapter refuses non-local HTTP bases.
